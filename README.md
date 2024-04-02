@@ -1,3 +1,3 @@
 
-npm install json-server
+npm install json-server   
 npx json-server champions.json
