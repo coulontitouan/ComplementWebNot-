@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App </title>
+    <link href="https://bootswatch.com/5/sketchy/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script type="module" src="/js/app.js"></script>
+</head>
+
+
+<body>
+    <header data-bs-theme="dark">
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-file-earmark" viewBox="0 0 16 16">
+                        <path
+                            d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                    </svg>
+                    &nbsp;
+                    <strong>Champions de LoL</strong>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#/" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="#/champions" class="nav-link px-2 text-white">Tous les champions</a></li>
+                    <li><a href="#/favoris" class="nav-link px-2 text-white">Favoris</a></li>
+                    <li><a href="#/classement" class="nav-link px-2 text-white">Classement</a></li>
+                </ul>
+                <input class="form-control" type="text" placeholder="Rechercher" aria-label="Search" id="searchbar">
+                <script>
+                    document.getElementById('searchbar').addEventListener('input', function (e) {
+                        window.location.hash = `#/search/${e.target.value}`;
+                    });
+                    const lazyImages = document.querySelectorAll('.lazy');
+                    const observer = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.src = entry.target.dataset.src;
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+
+                    lazyImages.forEach(image => {
+                        observer.observe(image);
+                    });
+                </script>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <div class=" py-5 bg-body-tertiary">
+            <div class="container">
+                <div id="content"></div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
